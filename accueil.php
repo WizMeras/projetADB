@@ -45,10 +45,10 @@ else{
                     <a class="btn btn-secondary" href="accueil.php?localisation=antarctique">Antarctique</a>
                     <a class="btn btn-secondary" href="accueil.php?localisation=australie">Australie</a>
                     <a class="btn btn-secondary" href="accueil.php?localisation=argentine">Argentine</a>
-                    <a class="btn btn-secondary" href="accueil.php?localisation=iles_malouines">Îles Malouines</a>
-                    <a class="btn btn-secondary" href="accueil.php?localisation=iles_galapagos">Îles Galapagos</a>
-                    <a class="btn btn-secondary" href="accueil.php?localisation=nouvelle_zelande">Nouvelle-Zélande</a>
-                    <a class="btn btn-secondary" href="accueil.php?localisation=afrique_sud">Afrique du Sud</a>
+                    <a class="btn btn-secondary" href="accueil.php?localisation=malouines">Îles Malouines</a>
+                    <a class="btn btn-secondary" href="accueil.php?localisation=galapagos">Îles Galapagos</a>
+                    <a class="btn btn-secondary" href="accueil.php?localisation=zelande">Nouvelle-Zélande</a>
+                    <a class="btn btn-secondary" href="accueil.php?localisation=afrique">Afrique du Sud</a>
                     <a class="btn btn-secondary" href="accueil.php?localisation=autres">Autres</a>
                 </div>
             </div>
@@ -76,7 +76,7 @@ else{
                         <div class="card-body" style="height: 100%;">
                             <div class="d-flex flex-column justify-content-start align-items-start" style="height: 80%;">
                                 <p class="card-text"><?php echo ucfirst($rapport['localisation']); ?> - <?php echo date('d/m/Y', strtotime($rapport['date_ecriture'])); ?></p>
-                                <a href="rapport.php?id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h2><?php echo ucfirst($rapport['titre']); ?></h2></a>
+                                <a href="rapport.php?id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
                                 <p><?php echo $description; ?></p>
                             </div>
                             <div class="d-flex flex-row justify-content-between align-items-end">

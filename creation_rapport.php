@@ -2,7 +2,7 @@
 include ("header.php");
 require("fonction_rapport.php");
 
-if(isset($_POST['publier'])){
+/*if(isset($_POST['publier'])){
     $id_utilisateur = $_SESSION['user']['id_utilisateur'];
     $titre = htmlspecialchars(trim($_POST['titre']));
     $contenu = nl2br(htmlspecialchars(trim($_POST['rapport'])));
@@ -17,7 +17,7 @@ if(isset($_POST['modifier'])){
     $contenu = nl2br(htmlspecialchars(trim($_POST['rapport'])));
     modifierContenuRapport($id_rapport, $contenu);
     header('Location: rapport.php?id=' . $id_rapport);
-}
+}*/
 
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
@@ -44,7 +44,7 @@ if(isset($_SESSION['user'])){
                     </div>
 
                     <div class="container d-flex justify-content-center align-items-center flex-row col-10 p-3 my-2">
-                        <FORM class="form d-flex flex-row" style="width: 100%;" action="creation_rapport.php?id=<?php echo $id_rapport; ?>" method="POST" enctype="multipart/form-data">
+                        <FORM class="form d-flex flex-row" style="width: 100%;" action="controller.php?action=modifierRapport&id=<?php echo $id_rapport; ?>" method="POST" enctype="multipart/form-data">
                             <div class="container d-flex justify-content-center flex-column col-5 p-3 my-2 bg-white rounded">
                                 <LABEL class="form-label" for="rapport">Corps du rapport:</LABEL>
                                 <TEXTAREA class="form-control" name="rapport" cols="30" rows="12" required><?php echo $rapport['contenu'];?></TEXTAREA> <br>
@@ -75,7 +75,7 @@ if(isset($_SESSION['user'])){
         </div>
 
         <div class="container d-flex justify-content-center align-items-center flex-row col-10 p-3 my-2">
-            <FORM class="form d-flex flex-row" style="width: 100%;" action="creation_rapport.php" method="POST" enctype="multipart/form-data">
+            <FORM class="form d-flex flex-row" style="width: 100%;" action="controller.php?action=publier" method="POST" enctype="multipart/form-data">
                 <div class="container d-flex justify-content-center flex-column col-5 p-3 my-2 bg-white rounded">
                     <LABEL class="form-label" for="titre">Titre:</LABEL>
                     <INPUT class="form-control" type="text" name="titre" required></INPUT> <br>

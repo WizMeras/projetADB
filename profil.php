@@ -59,10 +59,12 @@ if(isset($_SESSION['user'])){
         ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <p><?php echo ucfirst($rapport['localisation']); ?></p>
-            <img class="img-thumbnail img-fluid" style="min-width: 380px; min-height: 280px; max-width: 380px; max-height: 280px;" src="images/<?php echo $rapport['image_couverture']; ?>" alt="Photo de couverture">
-            <p><?php echo $rapport['titre']; ?></p>
+            <a href="rapport.php?id=<?php echo $rapport[0]; ?>">
+                <img class="img-thumbnail img-fluid" style="min-width: 380px; min-height: 280px; max-width: 380px; max-height: 280px;" src="images/<?php echo $rapport['image_couverture']; ?>" alt="Photo de couverture">
+            </a>
+            <a href="rapport.php?id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
             <p><?php echo $description; ?></p>
-            <p><?php echo date('d/m/Y', strtotime($rapport['date_ecriture'])); ?> - Nombre commentaires</p>
+            <p><?php echo date('d/m/Y', strtotime($rapport['date_ecriture'])); ?></p>
         </div>
         <?php } ?>
     </div>

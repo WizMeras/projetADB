@@ -8,7 +8,7 @@ $image_couverture = $rapport['image_couverture'];
 $commentaires = fetchCommentaires($id_rapport);
 $nombre_commentaires = countCommentaires($id_rapport);
 
-if(isset($_POST['commenter'])){
+/*if(isset($_POST['commenter'])){
     if(!isset($_SESSION['user'])){
         header('Location: connexion.php');
         exit();
@@ -31,7 +31,7 @@ if(isset($_POST['Supprimer'])){
     supprimerRapport($id_rapport);
     header('Location: accueil.php');
     exit();
-}
+}*/
 ?>
 
 <!DOCTYPE html>
@@ -50,10 +50,12 @@ if(isset($_POST['Supprimer'])){
                 <p>Publié par: <?php echo $rapport['pseudo']; ?></p>
                 <p>Date de publication: <?php echo $rapport['date_ecriture']; ?></p>
                 <?php if(isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $rapport['id_utilisateur']){ ?>
-                <FORM action="rapport.php?id=<?php echo $id_rapport; ?>" method="POST">
-                    <button class="btn btn-primary" type="submit" name="Modifier">Modifier</button>
-                    <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
-                </FORM>
+                    
+                    <form action="controller.php?action=supprimerRapport" method="POST" style="display:inline">
+                        <a class="btn btn-primary" href="creation_rapport.php?modif=1&id=<?php echo $id_rapport; ?>">Modifier</a>
+                        <input type="hidden" name="id_rapport" value="<?php echo $id_rapport; ?>">
+                        <button class="btn btn-danger" type="submit">Supprimer</button>
+                    </form>
                 <?php } ?>
                 <hr>
             </div>
@@ -71,11 +73,10 @@ if(isset($_POST['Supprimer'])){
         <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2">
             <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2 bg-white rounded">
                 <br>
-                    <FORM action="rapport.php?id=<?php echo $id_rapport; ?>" method="POST">
+                    <FORM action="controller.php?action=commenter&id=<?php echo $id_rapport; ?>" method="POST">
                         <textarea class="form-control" name="commentaire" id="commentaire" placeholder="Commentaire" cols="100" rows="5"></textarea>
                         <input class="btn btn-primary" type="submit" name="commenter" value="Envoyer">
                     </FORM>
-                </FORM>
             </div>
             <div>
                 <?php foreach($commentaires as $commentaire){ ?>
