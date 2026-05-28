@@ -1,0 +1,49 @@
+:root{
+    --bs-heading-color: #003366 !important;
+}
+
+table, th, td{
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+th, td{
+    padding: 5px;
+    text-align: center;
+}
+
+body{
+    font-family: 'Inter', sans-serif;
+    color: #003366 !important;
+    background-color: #F7F9FB !important;
+}
+
+.small{
+    width: 42px;
+    height: 42px;
+}
+
+.btn-primary{
+    background-color: #003366 !important;
+}
+
+.btn-primary:hover{
+    background-color: #0357AB !important;
+}
+
+.btn-secondary{
+    background-color: #FF8C00 !important;
+}
+
+.btn-secondary:hover{
+    background-color: #FFCC00 !important;
+}
+
+.errorField{
+    border: 1px solid red;
+}
+
+.errorMessage{
+    color: red;
+}
+

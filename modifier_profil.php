@@ -1,0 +1,86 @@
+<?php
+include ("header.php");
+require("fonction_admin.php");
+
+if(isset($_SESSION['user'])){
+    $user = $_SESSION['user'];
+    $id_utilisateur = $user['id_utilisateur'];
+
+    if(isset($_POST['modifierPp'])){
+        $image = uploadPp();
+        $id_image = getImageId($image);
+        modifierPp($id_utilisateur, $id_image);
+        header("Location: profil.php");
+    }
+
+    if(isset($_POST['modifierPseudo'])){
+        $nouveauPseudo = $_POST['pseudo'];
+        modifierPseudo($id_utilisateur, $nouveauPseudo);
+        header("Location: profil.php");
+    }
+
+    if(isset($_POST['modifierEmail'])){
+        $nouvelEmail = $_POST['email'];
+        modifierEmail($id_utilisateur, $nouvelEmail);
+        header("Location: profil.php");
+    }
+
+    if(isset($_POST['modifierMdp'])){
+        $nouveauMdp = $_POST['mdp'];
+        $confMdp = $_POST['confMdp'];
+        if($nouveauMdp === $confMdp){
+            modifierMdp($id_utilisateur, $nouveauMdp);
+            header("Location: profil.php");
+        }
+    }
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modifier profil - PenguinWatch</title>
+</head>
+<body>
+    <div class="container d-flex justify-content-center align-items-center flex-column">
+        <h1>Modifier profil de <?php echo $user['pseudo']; ?></h1>
+        <div class="container d-flex justify-content-center align-items-center flex-row col-12 my-2">
+            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+                <FORM class="form-group" action="modifier_profil.php" method="POST" enctype="multipart/form-data">
+                    <LABEL class="form-label" for="photo">Changer photo de profil:</LABEL> <br>
+                    <INPUT class="form-control" type="file" name="photo" required></INPUT>
+                    <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPp" value="Modifier"></INPUT>
+                </FORM>
+            </div>
+
+            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+                <FORM class="form-group" action="modifier_profil.php" method="POST">
+                    <LABEL class="form-label" for="pseudo">Pseudo:</LABEL> <br>
+                    <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $user['pseudo']; ?>"></INPUT>
+                    <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPseudo" value="Modifier pseudo"></INPUT> <br>
+                    <LABEL class="form-label mt-2" for="email">Email:</LABEL>
+                    <INPUT class="form-control" type="email" name="email" value="<?php echo $user['email']; ?>"></INPUT>
+                    <INPUT class="btn btn-primary mt-2" type="submit" name="modifierEmail" value="Modifier email"></INPUT>
+                </FORM>
+            </div>
+
+            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+                <FORM class="form-group" action="modifier_profil.php" method="POST">
+                    <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
+                    <INPUT class="form-control" type="password" name="mdp" required></INPUT> <br>
+                    <LABEL class="form-label" for="mdp">Confirmer mot de passe:</LABEL> <br>
+                    <INPUT class="form-control" type="password" name="confMdp" required></INPUT>
+                    <INPUT class="btn btn-primary mt-2" type="submit" name="modifierMdp" value="Modifier mot de passe"></INPUT>
+                </FORM>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+<?php
+}
+else{
+    header("Location: connexion.php");
+}
+?>
