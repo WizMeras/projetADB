@@ -33,7 +33,6 @@ require_once("fonction_connexion.php");
                 <div class="errorMessage" id="errorEmail"></div> <br>
                 <div class="d-flex justify-content-between">
                     <LABEL class="form-label" for="mdp">Mot de passe:</LABEL>
-                    <a href="#">Mot de passe oublié?</a> <br>
                 </div>
                 <INPUT class="form-control" style="width: 100%;" type="password" name="mdp" required></INPUT> <br>
                 <INPUT class="btn btn-primary" style="width: 100%;" type="submit" name="connexion" value="Se connecter"></INPUT>
