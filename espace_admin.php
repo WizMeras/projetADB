@@ -70,7 +70,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <th>Actions</th>
             </tr>
             <?php foreach($utilisateurs as $utilisateur){ ?>
-            <tr>
+            <tr class="align-middle">
                 <td><?php echo $utilisateur['pseudo']; ?></td>
                 <td><?php echo $utilisateur['email']; ?></td>
                 <td><?php echo $utilisateur['role'] == '2' ? 'Administrateur' : 'Utilisateur'; ?></td>
