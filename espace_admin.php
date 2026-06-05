@@ -89,10 +89,6 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
             echo "Une erreur est survenue lors de la création de l'utilisateur";
         } ?>
     </div>
-</body>
-<script>
-</script>
-</html>
 
 <?php
     if(isset($modif) && isset($id_utilisateur)){
@@ -106,7 +102,8 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $utilisateur['pseudo']; ?>" required></INPUT> <br>
                 <LABEL class="form-label" for="email">Email:</LABEL> <br>
-                <INPUT class="form-control" type="email" name="email" value="<?php echo $utilisateur['email']; ?>" required></INPUT> <br>
+                <INPUT class="form-control" type="email" name="email" id="email" value="<?php echo $utilisateur['email']; ?>" required></INPUT>
+                <div class="errorMessage" id="errorEmail"></div> <br>
                 <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
                 <INPUT class="form-control" type="password" name="mdp" placeholder="Nouveau mot de passe"></INPUT> <br>
                 <LABEL class="form-label" for="role">Rôle:</LABEL> <br>
@@ -118,6 +115,11 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
             </FORM>
         </div>
     <?php }
+?>
+</body>
+<script src="connexion.js"></script>
+</html>
+<?php
 
 }
 else{
