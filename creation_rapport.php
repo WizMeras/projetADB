@@ -2,23 +2,6 @@
 include ("header.php");
 require("fonction_rapport.php");
 
-/*if(isset($_POST['publier'])){
-    $id_utilisateur = $_SESSION['user']['id_utilisateur'];
-    $titre = htmlspecialchars(trim($_POST['titre']));
-    $contenu = nl2br(htmlspecialchars(trim($_POST['rapport'])));
-    $localisation = htmlspecialchars(trim($_POST['localisation']));
-
-    creerRapport($id_utilisateur, $titre, $contenu, $localisation);
-    header('Location: accueil.php');
-}
-
-if(isset($_POST['modifier'])){
-    $id_rapport = htmlspecialchars($_GET['id']);
-    $contenu = nl2br(htmlspecialchars(trim($_POST['rapport'])));
-    modifierContenuRapport($id_rapport, $contenu);
-    header('Location: rapport.php?id=' . $id_rapport);
-}*/
-
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
     if(isset($_GET['modif']) && $_GET['modif'] == 1){

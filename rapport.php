@@ -7,31 +7,6 @@ $rapport = afficherRapport($id_rapport);
 $image_couverture = $rapport['image_couverture'];
 $commentaires = fetchCommentaires($id_rapport);
 $nombre_commentaires = countCommentaires($id_rapport);
-
-/*if(isset($_POST['commenter'])){
-    if(!isset($_SESSION['user'])){
-        header('Location: connexion.php');
-        exit();
-    }
-    else{
-        $id_utilisateur = $_SESSION['user']['id_utilisateur'];
-        $contenu = htmlspecialchars(nl2br(trim($_POST['commentaire'])));
-        creerCommentaire($id_utilisateur, $id_rapport, $contenu);
-        header('Location: rapport.php?id=' . $id_rapport);
-        exit();
-    }
-}
-
-if(isset($_POST['Modifier'])){
-    header('Location: creation_rapport.php?modif=1&id=' . $id_rapport);
-    exit();
-}
-
-if(isset($_POST['Supprimer'])){
-    supprimerRapport($id_rapport);
-    header('Location: accueil.php');
-    exit();
-}*/
 ?>
 
 <!DOCTYPE html>

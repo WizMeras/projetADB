@@ -1,19 +1,6 @@
 <?php
 include ("header.php");
 require_once("fonction_connexion.php");
-
-/*if(isset($_POST['connexion'])){
-    $email = htmlspecialchars(trim($_POST['email']));
-    $mdp = htmlspecialchars($_POST['mdp']);
-    $user = connexion($email, $mdp);
-    if($user){
-        $_SESSION['user'] = $user;
-        header('Location: accueil.php');
-    }
-    else{
-        $error = 1;
-    }
-}*/
 ?>
 
 <!DOCTYPE html>
