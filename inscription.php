@@ -2,6 +2,26 @@
 include("header.php");
 require_once("fonction_connexion.php");
 
+if(isset($_POST['inscription'])){
+    $pseudo = htmlspecialchars(trim($_POST['pseudo']));
+    $email = htmlspecialchars(trim($_POST['email']));
+    $mdp = htmlspecialchars($_POST['mdp']);
+    $confirmMdp = htmlspecialchars($_POST['confirmMdp']);
+    if(emailExistant($email)){
+        $error = 2;
+    }
+    else{
+        if($mdp == $confirmMdp){
+            $role = 1;
+            inscription($pseudo, $email, $mdp, $role);
+            header('Location: connexion.php');
+        }
+        else{
+            $error = 1;
+        }
+    }
+}
+
 if(isset($_GET['special']) && $_GET['special'] == 'admin'){
 ?>
 
@@ -16,7 +36,7 @@ if(isset($_GET['special']) && $_GET['special'] == 'admin'){
     <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
         <h1>Créer un nouvel utilisateur</h1>
         <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-            <FORM class="form" style="width: 100%;" method="POST" action="controller.php?action=creerUser">
+            <FORM class="form" style="width: 100%;" method="POST" action="espace_admin.php">
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="text" name="pseudo" required></INPUT> <br>
                 <LABEL class="form-label" for="email">Email:</LABEL> <br>
@@ -55,7 +75,7 @@ else{
     <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
         <h1>Inscription</h1>
         <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-            <FORM class="form" style="width: 100%;" method="POST" action="controller.php?action=inscription">
+            <FORM class="form" style="width: 100%;" method="POST" action="inscription.php">
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="text" name="pseudo" required></INPUT> <br>
                 <LABEL class="form-label" for="email">Email:</LABEL> <br>

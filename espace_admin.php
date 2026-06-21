@@ -18,8 +18,8 @@ if(isset($_POST['creer'])){
     }
 }
 
-if(isset($_GET['modifier']) && isset($_GET['id_utilisateur'])){
-    $id_utilisateur = htmlspecialchars($_GET['id_utilisateur']);
+if(isset($_POST['modifier'])){
+    $id_utilisateur = htmlspecialchars($_POST['id_utilisateur']);
     $modif = true;
 }
 
@@ -59,7 +59,9 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
     <div class="container d-flex justify-content-center align-items-center flex-column">
         <div class="container d-flex justify-content-between align-items-center flex-row col-12 p-3 my-2">
             <h1>Liste d'utilisateurs</h1>
-            <a class="btn btn-primary" href="inscription.php?special=admin">Créer Utilisateur</a>
+            <FORM action="inscription.php?special=admin" method="POST">
+                <button class="btn btn-primary" type="submit">Créer Utilisateur</button>
+            </FORM>
         </div>
         <table class="table">
             <tr>
@@ -76,9 +78,9 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <td><?php echo $utilisateur['role'] == '2' ? 'Administrateur' : 'Utilisateur'; ?></td>
                 <td><?php echo $utilisateur['date_creation']; ?></td>
                 <td>
-                    <a class="btn btn-secondary" href="espace_admin.php?modifier=1&id_utilisateur=<?php echo $utilisateur['id_utilisateur']; ?>">Modifier</a>
-                    <FORM action="controller.php?action=supprimerUtilisateur" method="POST" style="display:inline">
+                    <FORM action="espace_admin.php" method="POST">
                         <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>
+                        <button class="btn btn-secondary" type="submit" name="modifier" id="modifier">Modifier</button>
                         <button class="btn btn-danger" type="submit" name="supprimer" id="supprimer">Supprimer</button>
                     </FORM>
                 </td>
@@ -97,7 +99,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
         ?>
         <div class="container d-flex justify-content-center align-items-center flex-column col-6 p-3 my-2 bg-light rounded">
             <h1>Modifier l'utilisateur <?php echo $utilisateur['pseudo']; ?></h1>
-            <FORM class="form-group" method="POST" action="controller.php?action=modifierUtilisateur">
+            <FORM class="form-group" method="POST" action="espace_admin.php">
                 <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $utilisateur['pseudo']; ?>" required></INPUT> <br>

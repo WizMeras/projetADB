@@ -1,6 +1,19 @@
 <?php
 include ("header.php");
 require_once("fonction_connexion.php");
+
+if(isset($_POST['connexion'])){
+    $email = htmlspecialchars(trim($_POST['email']));
+    $mdp = htmlspecialchars($_POST['mdp']);
+    $user = connexion($email, $mdp);
+    if($user){
+        $_SESSION['user'] = $user;
+        header('Location: accueil.php');
+    }
+    else{
+        $error = 1;
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -14,7 +27,7 @@ require_once("fonction_connexion.php");
     <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
         <h1>Connexion</h1>
         <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-            <FORM class="form" style="width: 100%;" method="POST" action="controller.php?action=login">
+            <FORM class="form" style="width: 100%;" method="POST" action="connexion.php">
                 <LABEL class="form-label" for="email">Email:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="email" name="email" id="email" required></INPUT>
                 <div class="errorMessage" id="errorEmail"></div> <br>

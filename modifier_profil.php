@@ -47,7 +47,7 @@ if(isset($_SESSION['user'])){
         <h1>Modifier profil de <?php echo $user['pseudo']; ?></h1>
         <div class="container d-flex justify-content-center align-items-center flex-row col-12 my-2">
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="controller.php?action=modifierPp" method="POST" enctype="multipart/form-data">
+                <FORM class="form-group" action="modifier_profil.php" method="POST" enctype="multipart/form-data">
                     <LABEL class="form-label" for="photo">Changer photo de profil:</LABEL> <br>
                     <INPUT class="form-control" type="file" name="photo" required></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPp" value="Modifier"></INPUT>
@@ -55,12 +55,10 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="controller.php?action=modifierPseudo" method="POST">
+                <FORM class="form-group" action="modifier_profil.php" method="POST">
                     <LABEL class="form-label" for="pseudo">Pseudo:</LABEL> <br>
                     <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $user['pseudo']; ?>"></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPseudo" value="Modifier pseudo"></INPUT> <br>
-                </FORM>
-                <FORM class="form-group" action="controller.php?action=modifierEmail" method="POST">
                     <LABEL class="form-label mt-2" for="email">Email:</LABEL>
                     <INPUT class="form-control" type="email" name="email" value="<?php echo $user['email']; ?>"></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierEmail" value="Modifier email"></INPUT>
@@ -68,7 +66,7 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="controller.php?action=modifierMdp" method="POST">
+                <FORM class="form-group" action="modifier_profil.php" method="POST">
                     <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
                     <INPUT class="form-control" type="password" name="mdp" required></INPUT> <br>
                     <LABEL class="form-label" for="mdp">Confirmer mot de passe:</LABEL> <br>
