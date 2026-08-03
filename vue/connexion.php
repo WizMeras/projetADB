@@ -1,6 +1,5 @@
 <?php
 include ("header.php");
-require_once("fonction_connexion.php");
 
 if(isset($_POST['connexion'])){
     $email = htmlspecialchars(trim($_POST['email']));
