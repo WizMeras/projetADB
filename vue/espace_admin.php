@@ -113,6 +113,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                     <option value="1" <?php if($utilisateur['role'] == '1') echo 'selected'; ?>>Utilisateur</option>
                     <option value="2" <?php if($utilisateur['role'] == '2') echo 'selected'; ?>>Administrateur</option>
                 </SELECT> <br>
+<!-- Modifier le role ne fonctionne pas actuellement -->
                 <INPUT class="btn btn-primary" type="submit" name="modifierUtilisateur" value="Modifier Utilisateur"></INPUT>
             </FORM>
         </div>

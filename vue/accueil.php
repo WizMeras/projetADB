@@ -60,6 +60,7 @@ else{
                 else {
                     $description = $rapport['contenu'];
                 }
+            //Afficher un message si aucun rapport a afficher
             ?>
             <div class="card mb-3 col-12">
                 <div class="row g-0">

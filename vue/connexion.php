@@ -1,18 +1,5 @@
 <?php
 include ("header.php");
-
-if(isset($_POST['connexion'])){
-    $email = htmlspecialchars(trim($_POST['email']));
-    $mdp = htmlspecialchars($_POST['mdp']);
-    $user = connexion($email, $mdp);
-    if($user){
-        $_SESSION['user'] = $user;
-        header('Location: accueil.php');
-    }
-    else{
-        $error = 1;
-    }
-}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +13,7 @@ if(isset($_POST['connexion'])){
     <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
         <h1>Connexion</h1>
         <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-            <FORM class="form" style="width: 100%;" method="POST" action="connexion.php">
+            <FORM class="form" style="width: 100%;" method="POST" action="index.php?page=connexion">
                 <LABEL class="form-label" for="email">Email:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="email" name="email" id="email" required></INPUT>
                 <div class="errorMessage" id="errorEmail"></div> <br>
@@ -47,7 +34,7 @@ if(isset($_POST['connexion'])){
 
         <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
             <p>Nouveau?</p>
-            <a class="btn btn-secondary" style="width: 100%;" href="inscription.php">S'inscrire</a>
+            <a class="btn btn-secondary" style="width: 100%;" href="index.php?page=inscription">S'inscrire</a>
         </div>
     </div>
 </body>

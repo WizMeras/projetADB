@@ -29,6 +29,9 @@ switch($page){
     case 'rapport':
         require_once("controllers/cont_rapport.php");
         break;
+    case 'admin':
+        require_once("controllers/cont_admin.php");
+        break;
     default:
         include("vue/404.php");
 }
