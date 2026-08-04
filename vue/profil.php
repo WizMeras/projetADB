@@ -29,9 +29,9 @@ if(isset($_SESSION['user'])){
             </div>
             <div class="d-flex flex-column justify-content-start">
                 <?php if($user['role'] == '2'){ ?>
-                    <a class="btn btn-primary my-2" href="espace_admin.php">Accéder Dashboard Admin</a>
+                    <a class="btn btn-primary my-2" href="index.php?page=admin">Accéder Dashboard Admin</a>
                 <?php } ?>
-                <a class="btn btn-secondary my-2" href="modifier_profil.php">Modifier profil</a>
+                <a class="btn btn-secondary my-2" href="index.php?page=modif_profil">Modifier profil</a>
             </div>
         </div>
     </div>
@@ -59,10 +59,10 @@ if(isset($_SESSION['user'])){
         ?>
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <p><?php echo ucfirst($rapport['localisation']); ?></p>
-            <a href="rapport.php?id=<?php echo $rapport[0]; ?>">
+            <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>">
                 <img class="img-thumbnail img-fluid" style="min-width: 380px; min-height: 280px; max-width: 380px; max-height: 280px;" src="images/<?php echo $rapport['image_couverture']; ?>" alt="Photo de couverture">
             </a>
-            <a href="rapport.php?id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
+            <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
             <p><?php echo $description; ?></p>
             <p><?php echo date('d/m/Y', strtotime($rapport['date_ecriture'])); ?></p>
         </div>
@@ -74,7 +74,7 @@ if(isset($_SESSION['user'])){
 <?php
 }
 else{
-    header('Location: connexion.php');
+    header('Location: index.php?page=connexion');
 }
 include ("footer.php");
 ?>

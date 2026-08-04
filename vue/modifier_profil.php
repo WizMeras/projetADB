@@ -1,6 +1,5 @@
 <?php
 include ("header.php");
-require("fonction_admin.php");
 
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
@@ -10,19 +9,19 @@ if(isset($_SESSION['user'])){
         $image = uploadPp();
         $id_image = getImageId($image);
         modifierPp($id_utilisateur, $id_image);
-        header("Location: profil.php");
+        header("Location: index.php?page=profil");
     }
 
     if(isset($_POST['modifierPseudo'])){
         $nouveauPseudo = $_POST['pseudo'];
         modifierPseudo($id_utilisateur, $nouveauPseudo);
-        header("Location: profil.php");
+        header("Location: index.php?page=profil");
     }
 
     if(isset($_POST['modifierEmail'])){
         $nouvelEmail = $_POST['email'];
         modifierEmail($id_utilisateur, $nouvelEmail);
-        header("Location: profil.php");
+        header("Location: index.php?page=profil");
     }
 
     if(isset($_POST['modifierMdp'])){
@@ -30,7 +29,7 @@ if(isset($_SESSION['user'])){
         $confMdp = $_POST['confMdp'];
         if($nouveauMdp === $confMdp){
             modifierMdp($id_utilisateur, $nouveauMdp);
-            header("Location: profil.php");
+            header("Location: index.php?page=profil");
         }
     }
 ?>
@@ -47,7 +46,7 @@ if(isset($_SESSION['user'])){
         <h1>Modifier profil de <?php echo $user['pseudo']; ?></h1>
         <div class="container d-flex justify-content-center align-items-center flex-row col-12 my-2">
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="modifier_profil.php" method="POST" enctype="multipart/form-data">
+                <FORM class="form-group" action="index.php?page=modif_profil" method="POST" enctype="multipart/form-data">
                     <LABEL class="form-label" for="photo">Changer photo de profil:</LABEL> <br>
                     <INPUT class="form-control" type="file" name="photo" required></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPp" value="Modifier"></INPUT>
@@ -55,7 +54,7 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="modifier_profil.php" method="POST">
+                <FORM class="form-group" action="index.php?page=modif_profil" method="POST">
                     <LABEL class="form-label" for="pseudo">Pseudo:</LABEL> <br>
                     <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $user['pseudo']; ?>"></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPseudo" value="Modifier pseudo"></INPUT> <br>
@@ -66,7 +65,7 @@ if(isset($_SESSION['user'])){
             </div>
 
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
-                <FORM class="form-group" action="modifier_profil.php" method="POST">
+                <FORM class="form-group" action="index.php?page=modif_profil" method="POST">
                     <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
                     <INPUT class="form-control" type="password" name="mdp" required></INPUT> <br>
                     <LABEL class="form-label" for="mdp">Confirmer mot de passe:</LABEL> <br>
@@ -81,6 +80,6 @@ if(isset($_SESSION['user'])){
 <?php
 }
 else{
-    header("Location: connexion.php");
+    header("Location: index.php?page=connexion");
 }
 ?>
