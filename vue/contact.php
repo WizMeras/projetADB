@@ -1,5 +1,5 @@
 <?php
-include 'header.php';
+include("header.php");
 ?>
 
 <!DOCTYPE html>
@@ -15,5 +15,5 @@ include 'header.php';
 </html>
 
 <?php
-include 'footer.php';
+include("footer.php");
 ?>

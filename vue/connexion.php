@@ -38,5 +38,5 @@ include ("header.php");
         </div>
     </div>
 </body>
-<script src="connexion.js"></script>
+<script src="js/connexion.js"></script>
 </html>

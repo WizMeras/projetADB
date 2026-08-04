@@ -1,6 +1,5 @@
 <?php
 include ("header.php");
-require("fonction_rapport.php");
 
 $id_rapport = htmlspecialchars($_GET['id']);
 $rapport = afficherRapport($id_rapport);
@@ -10,26 +9,26 @@ $nombre_commentaires = countCommentaires($id_rapport);
 
 if(isset($_POST['commenter'])){
     if(!isset($_SESSION['user'])){
-        header('Location: connexion.php');
+        header('Location: index.php?page=connexion');
         exit();
     }
     else{
         $id_utilisateur = $_SESSION['user']['id_utilisateur'];
         $contenu = htmlspecialchars(nl2br(trim($_POST['commentaire'])));
         creerCommentaire($id_utilisateur, $id_rapport, $contenu);
-        header('Location: rapport.php?id=' . $id_rapport);
+        header('Location: index.php?page=rapport&id=' . $id_rapport);
         exit();
     }
 }
 
 if(isset($_POST['Modifier'])){
-    header('Location: creation_rapport.php?modif=1&id=' . $id_rapport);
+    header('Location: index.php?page=creation&modif=1&id=' . $id_rapport);
     exit();
 }
 
 if(isset($_POST['Supprimer'])){
     supprimerRapport($id_rapport);
-    header('Location: accueil.php');
+    header('Location: index.php?page=accueil');
     exit();
 }
 ?>
@@ -51,11 +50,10 @@ if(isset($_POST['Supprimer'])){
                 <p>Date de publication: <?php echo $rapport['date_ecriture']; ?></p>
                 <?php if(isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $rapport['id_utilisateur']){ ?>
                     
-                    <form action="controller.php?action=supprimerRapport" method="POST" style="display:inline">
-                        <a class="btn btn-primary" href="creation_rapport.php?modif=1&id=<?php echo $id_rapport; ?>">Modifier</a>
-                        <input type="hidden" name="id_rapport" value="<?php echo $id_rapport; ?>">
-                        <button class="btn btn-danger" type="submit">Supprimer</button>
-                    </form>
+                    <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST" style="display:inline">
+                        <button class="btn btn-primary" type="submit" name="Modifier">Modifier</button>
+                        <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
+                    </FORM>
                 <?php } ?>
                 <hr>
             </div>
@@ -73,7 +71,7 @@ if(isset($_POST['Supprimer'])){
         <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2">
             <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2 bg-white rounded">
                 <br>
-                    <FORM action="controller.php?action=commenter&id=<?php echo $id_rapport; ?>" method="POST">
+                    <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST">
                         <textarea class="form-control" name="commentaire" id="commentaire" placeholder="Commentaire" cols="100" rows="5"></textarea>
                         <input class="btn btn-primary" type="submit" name="commenter" value="Envoyer">
                     </FORM>

@@ -10,13 +10,13 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="vie_privee.php">Vie privée</a>
+                    <a class="nav-link" href="index.php?page=vie_privee">Vie privée</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="conditions_generales.php">Conditions générales d'utilisation</a>
+                    <a class="nav-link" href="index.php?page=conditions">Conditions générales d'utilisation</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="contact.php">Contact</a>
+                    <a class="nav-link" href="index.php?page=contact">Contact</a>
                 </li>
             </ul>
         </div>
