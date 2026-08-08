@@ -44,14 +44,15 @@ function modifierMdp($id_utilisateur, $mdp){
     ]);
 }
 
-function modifierUtilisateur($id_utilisateur, $pseudo, $email, $mdp){
+function modifierUtilisateur($id_utilisateur, $pseudo, $email, $mdp, $role){
     $mysqlClient = connectDatabase();
-    $req = $mysqlClient->prepare('UPDATE utilisateurs SET pseudo = :pseudo, email = :email, mdp = :mdp WHERE id_utilisateur = :id_utilisateur');
+    $req = $mysqlClient->prepare('UPDATE utilisateurs SET pseudo = :pseudo, email = :email, mdp = :mdp, role = :role WHERE id_utilisateur = :id_utilisateur');
     $req->execute([
         'id_utilisateur' => $id_utilisateur,
         'pseudo' => $pseudo,
         'email' => $email,
-        'mdp' => $mdp
+        'mdp' => $mdp,
+        'role' => $role
     ]);
 }
 

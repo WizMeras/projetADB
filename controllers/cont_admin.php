@@ -33,7 +33,7 @@ if(isset($_POST['modifierUtilisateur'])){
         $mdp = $utilisateur['mdp'];
     }
     $role = htmlspecialchars($_POST['role']);
-    modifierUtilisateur($id_utilisateur, $pseudo, $email, $mdp);
+    modifierUtilisateur($id_utilisateur, $pseudo, $email, $mdp, $role);
     header('Location: index.php?page=admin');
 }
 

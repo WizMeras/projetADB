@@ -35,11 +35,13 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <td><?php echo $utilisateur['role'] == '2' ? 'Administrateur' : 'Utilisateur'; ?></td>
                 <td><?php echo $utilisateur['date_creation']; ?></td>
                 <td>
-                    <FORM action="index.php?page=admin" method="POST">
-                        <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>
-                        <button class="btn btn-secondary" type="submit" name="modifier" id="modifier">Modifier</button>
-                        <button class="btn btn-danger" type="submit" name="supprimer" id="supprimer">Supprimer</button>
-                    </FORM>
+                    <?php if($utilisateur['id_utilisateur'] != $_SESSION['user']['id_utilisateur']) { ?>
+                        <FORM action="index.php?page=admin" method="POST">
+                            <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>
+                            <button class="btn btn-secondary" type="submit" name="modifier" id="modifier">Modifier</button>
+                            <button class="btn btn-danger" type="submit" name="supprimer" id="supprimer">Supprimer</button>
+                        </FORM>
+                    <?php } ?>
                 </td>
             </tr>
             <?php } ?>
@@ -70,7 +72,6 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                     <option value="1" <?php if($utilisateur['role'] == '1') echo 'selected'; ?>>Utilisateur</option>
                     <option value="2" <?php if($utilisateur['role'] == '2') echo 'selected'; ?>>Administrateur</option>
                 </SELECT> <br>
-<!-- Modifier le role ne fonctionne pas actuellement -->
                 <INPUT class="btn btn-primary" type="submit" name="modifierUtilisateur" value="Modifier Utilisateur"></INPUT>
             </FORM>
         </div>
