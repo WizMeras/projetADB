@@ -35,7 +35,7 @@ if(isset($_GET['special']) && $_GET['special'] == 'admin'){
         </div>
     </div>
 </body>
-<script src="connexion.js"></script>
+<script src="js/connexion.js"></script>
 </html>
 
 <?php
@@ -61,7 +61,8 @@ else{
                 <INPUT class="form-control" style="width: 100%;" type="email" name="email" id="email" required></INPUT>
                 <div class="errorMessage" id="errorEmail"></div> <br>
                 <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
-                <INPUT class="form-control" style="width: 100%;" type="password" name="mdp" required></INPUT> <br>
+                <INPUT class="form-control" style="width: 100%;" type="password" name="mdp" id="mdp" required></INPUT> 
+                <div class="errorMessage" id="errorMdp"></div> <br>
                 <LABEL class="form-label" for="confirmMdp">Confirmer mot de passe:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="password" name="confirmMdp" required></INPUT> <br>
                 <INPUT class="btn btn-primary" style="width: 100%;" type="submit" name="inscription" value="S'inscrire"></INPUT>

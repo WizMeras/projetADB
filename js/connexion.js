@@ -1,6 +1,6 @@
 function invalidEmail(email) {
-    const regex = /^[a-zA-Z0-9.]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$/;
-    return !regex.test(email);
+    const regexEmail = /^[a-zA-Z0-9.]+@[a-zA-Z0-9-]+\.[a-zA-Z]+$/;
+    return !regexEmail.test(email);
 }
 
 const email = document.getElementById("email");
@@ -13,5 +13,23 @@ email.addEventListener("input", (event) => {
     } else {
         email.classList.remove("errorField");
         errorEmail.innerHTML = "";
+    }
+});
+
+function invalidMdp(mdp){
+    const regexMdp = /^(?=.{8,}$)(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^A-Za-z0-9]).*$/;
+    return !regexMdp.test(mdp);
+}
+
+const mdp = document.getElementById("mdp");
+const errorMdp = document.getElementById("errorMdp");
+
+mdp.addEventListener("input", (event) => {
+    if (invalidMdp(mdp.value)) {
+        mdp.classList.add("errorField");
+        errorMdp.innerHTML = "Mot de passe invalide";
+    } else {
+        mdp.classList.remove("errorField");
+        errorMdp.innerHTML = "";
     }
 });

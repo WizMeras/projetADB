@@ -78,7 +78,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
     <?php }
 ?>
 </body>
-<script src="connexion.js"></script>
+<script src="js/connexion.js"></script>
 </html>
 <?php
 

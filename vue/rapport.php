@@ -54,6 +54,11 @@ if(isset($_POST['Supprimer'])){
                         <button class="btn btn-primary" type="submit" name="Modifier">Modifier</button>
                         <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
                     </FORM>
+                <?php }
+                elseif(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){ ?>
+                    <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST" style="display:inline">
+                        <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
+                    </FORM>
                 <?php } ?>
                 <hr>
             </div>

@@ -28,7 +28,7 @@ include ("header.php");
 
         <?php
         if(isset($error)){
-            echo "Email ou mot de passe incorrect";
+            echo "<p class='errorMessage'>Email ou mot de passe incorrect</p>";
         }
         ?>
 
