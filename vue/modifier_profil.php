@@ -48,7 +48,7 @@ if(isset($_SESSION['user'])){
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
                 <FORM class="form-group" action="index.php?page=modif_profil" method="POST" enctype="multipart/form-data">
                     <LABEL class="form-label" for="photo">Changer photo de profil:</LABEL> <br>
-                    <INPUT class="form-control" type="file" name="photo" required></INPUT>
+                    <INPUT class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" name="photo" required></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierPp" value="Modifier"></INPUT>
                 </FORM>
             </div>

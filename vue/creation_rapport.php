@@ -67,7 +67,7 @@ if(isset($_SESSION['user'])){
                 <div class="container d-flex flex-column col-5 p-3 my-2">
                     <div class="bg-white p-3 rounded mb-3">
                         <LABEL class="form-label" for="photo">Ajouter une photo:</LABEL> <br>
-                        <INPUT class="form-control" type="file" name="photo"></INPUT>
+                        <INPUT class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" name="photo"></INPUT>
                     </div>
                     <div class="bg-white p-3 rounded">
                         <LABEL class="form-label" for="localisation">Localisation:</LABEL> <br>
