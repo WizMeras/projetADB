@@ -1,9 +1,11 @@
 <?php
 include ("header.php");
 
+// Vérfie que l'utilisateur est connecté
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
     $id_utilisateur = $user['id_utilisateur'];
+    // Récupére la photo, les rapports et les statistiques du profil.
     $pfp = fetchPhotoProfil($id_utilisateur);
     $rapports = fetchRapports($id_utilisateur);
     $nbre_postes = nbrePostes($id_utilisateur);
@@ -28,6 +30,7 @@ if(isset($_SESSION['user'])){
                 <p>Membre depuis <?php echo $user['date_creation']; ?></p>
             </div>
             <div class="d-flex flex-column justify-content-start">
+                <?php // Affiche le bouton de l'espace admin uniquement pour les admins ?>
                 <?php if($user['role'] == '2'){ ?>
                     <a class="btn btn-primary my-2" href="index.php?page=admin">Accéder Dashboard Admin</a>
                 <?php } ?>
@@ -50,7 +53,9 @@ if(isset($_SESSION['user'])){
         <h2>Rapports publiés</h2>
     </div>
     <div class="container d-flex justify-content-evenly flex-row flex-wrap">
+        <?php // Parcourt les rapports publiés par l'utilisateur ?>
         <?php foreach($rapports as $rapport){
+            // Limite la longueur de la description affichée dans chaque aperçu.
             if(strlen($rapport['contenu']) > 100){
                 $description = substr($rapport['contenu'], 0, 100) . '...';
             } else {
@@ -74,6 +79,7 @@ if(isset($_SESSION['user'])){
 <?php
 }
 else{
+    // Redirige les visiteurs non connectés vers la page de connexion.
     header('Location: index.php?page=connexion');
 }
 include ("footer.php");

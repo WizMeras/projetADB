@@ -1,6 +1,7 @@
 <?php
 include("header.php");
 
+// Affiche le formulaire de création d'utilisateur réservé à l'admin
 if(isset($_GET['special']) && $_GET['special'] == 'admin'){
 ?>
 
@@ -41,6 +42,7 @@ if(isset($_GET['special']) && $_GET['special'] == 'admin'){
 <?php
 }
 else{
+// Affiche le formulaire d'inscription publique
 ?>
 
 <!DOCTYPE html>
@@ -70,6 +72,7 @@ else{
         </div>
 
         <?php
+        // Affiche le message correspondant à l'erreur de validation renvoyée par le controleur
         if(isset($error)){
             if($error == 1){
                 echo "Les mots de passe ne correspondent pas";

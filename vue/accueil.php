@@ -1,6 +1,7 @@
 <?php
 include ("header.php");
 
+// Sélectionne la liste des rapports selon le filtre choisi par l'utilisateur
 if(isset($_GET['tri']) && $_GET['tri'] === 'populaires'){
     $rapports = listeRapportsPopulaires();
 }
@@ -8,10 +9,12 @@ elseif(isset($_GET['tri']) && $_GET['tri'] === 'recents'){
     $rapports = listeRapportsRecents();
 }
 elseif(isset($_GET['localisation'])){
+    // Nettoie la localisation avant de l'utiliser comme critére de recherche
     $localisation = htmlspecialchars(trim($_GET['localisation']));
     $rapports = listeRapportsParLocalisation($localisation);
 }
 else{
+    // Affiche tous les rapports lorsqu'aucun filtre n'est selectionné
     $rapports = listeRapports();
 }
 ?>
@@ -54,6 +57,7 @@ else{
                 <h1>Fil d'observation</h1>
             </div>
             <?php foreach($rapports as $rapport){ 
+                // Limite la description affichée
                 if(strlen($rapport['contenu']) > 200){
                     $description = substr($rapport['contenu'], 0, 200) . '...';
                 }

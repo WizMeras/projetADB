@@ -1,18 +1,22 @@
 <?php
 include ("header.php");
 
+// Récupere le rapport demandé ainsi que ses commentaires et leur nombre
 $id_rapport = htmlspecialchars($_GET['id']);
 $rapport = afficherRapport($id_rapport);
 $image_couverture = $rapport['image_couverture'];
 $commentaires = fetchCommentaires($id_rapport);
 $nombre_commentaires = countCommentaires($id_rapport);
 
+// Traite l'ajout d'un commentaire au rapport
 if(isset($_POST['commenter'])){
+    // Redirige vers la connexion si le visiteur n'est pas authentifié
     if(!isset($_SESSION['user'])){
         header('Location: index.php?page=connexion');
         exit();
     }
     else{
+        // Enregistre le commentaire puis recharge la page du rapport
         $id_utilisateur = $_SESSION['user']['id_utilisateur'];
         $contenu = htmlspecialchars(nl2br(trim($_POST['commentaire'])));
         creerCommentaire($id_utilisateur, $id_rapport, $contenu);
@@ -21,11 +25,13 @@ if(isset($_POST['commenter'])){
     }
 }
 
+// Redirige vers le formulaire de modification du rapport
 if(isset($_POST['Modifier'])){
     header('Location: index.php?page=creation&modif=1&id=' . $id_rapport);
     exit();
 }
 
+// Supprime le rapport puis retourne a la liste des rapports
 if(isset($_POST['Supprimer'])){
     supprimerRapport($id_rapport);
     header('Location: index.php?page=accueil');
@@ -48,6 +54,7 @@ if(isset($_POST['Supprimer'])){
                 <hr>
                 <p>Publié par: <?php echo $rapport['pseudo']; ?></p>
                 <p>Date de publication: <?php echo $rapport['date_ecriture']; ?></p>
+                <?php // Autorise l'auteur a modifier ou supprimer son rapport ?>
                 <?php if(isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $rapport['id_utilisateur']){ ?>
                     
                     <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST" style="display:inline">
@@ -55,6 +62,7 @@ if(isset($_POST['Supprimer'])){
                         <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
                     </FORM>
                 <?php }
+                // Autorise un administrateur a supprimer le rapport mais pas à le modifier
                 elseif(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){ ?>
                     <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST" style="display:inline">
                         <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
@@ -82,6 +90,7 @@ if(isset($_POST['Supprimer'])){
                     </FORM>
             </div>
             <div>
+                <?php // Affiche les commentaires du plus récent au plus ancien ?>
                 <?php foreach($commentaires as $commentaire){ ?>
                     <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2">
                         <img class="thumbnail small" src="images/<?php echo $commentaire['nom_image']; ?>" alt="Photo de profil">

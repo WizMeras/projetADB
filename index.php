@@ -1,8 +1,10 @@
 <?php
+// Initialise la session et le fuseau horaire utilisés par l'application
 session_start();
 date_default_timezone_set('Europe/Brussels');
 require_once("models/fonction_profil.php");
 
+// Récupére la page demandée ou utilise l'accueil par defaut
 if(isset($_GET['page'])){
     $page = $_GET['page'];
 }
@@ -10,6 +12,7 @@ else{
     $page = 'accueil';
 }
 
+// Oriente la requéte vers le controleur correspondant a la page
 switch($page){
     case 'accueil':
         require_once("controllers/cont_accueil.php");

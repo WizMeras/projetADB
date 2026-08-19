@@ -1,11 +1,14 @@
 <?php
 include ("header.php");
 
+// Vérifie que l'utilisateur est connecté
 if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
+    // Détermine si la page doit afficher le formulaire de modification
     if(isset($_GET['modif']) && $_GET['modif'] == 1){
         $id_rapport = htmlspecialchars($_GET['id']);
         $rapport = afficherRapport($id_rapport);
+        // Vérifie que le rapport appartient bien à l'utilisateur connecté.
         if($rapport['id_utilisateur'] != $user['id_utilisateur']){
             header('Location: index.php?page=accueil');
             exit();
@@ -97,6 +100,7 @@ if(isset($_SESSION['user'])){
     }
 }
 else{
+    // Redirige les visiteurs non connectés vers la page de connexion
     header('Location: index.php?page=connexion');
 }
 include ("footer.php");

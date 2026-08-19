@@ -27,6 +27,7 @@ include ("header.php");
     
 
         <?php
+        // Affiche un message si les identifiants de connexion sont invalides
         if(isset($error)){
             echo "<p class='errorMessage'>Email ou mot de passe incorrect</p>";
         }

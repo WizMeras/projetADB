@@ -30,6 +30,7 @@
         </div>
 
         <ul class="navbar-nav ml-auto">
+            <?php // Affiche les options de navigation selon l'état de connexion ?>
             <?php if(isset($_SESSION['user'])){ ?>
                 <li>
                     <FORM action="index.php?page=accueil" method="post">

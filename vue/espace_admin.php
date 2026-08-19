@@ -1,6 +1,7 @@
 <?php
 include ("header.php");
 
+// Vérfie que l'utilisateur est bien un admin
 if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
     $utilisateurs = listeUtilisateurs();
 ?>
@@ -28,13 +29,15 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <th>Date de création</th>
                 <th>Actions</th>
             </tr>
-            <?php foreach($utilisateurs as $utilisateur){ ?>
+            <?php // Parcourt les utilisateurs pour remplir le tableau
+            foreach($utilisateurs as $utilisateur){ ?>
             <tr class="align-middle">
                 <td><?php echo $utilisateur['pseudo']; ?></td>
                 <td><?php echo $utilisateur['email']; ?></td>
                 <td><?php echo $utilisateur['role'] == '2' ? 'Administrateur' : 'Utilisateur'; ?></td>
                 <td><?php echo $utilisateur['date_creation']; ?></td>
                 <td>
+                    <?php // Un administrateur ne peut pas modifier ou supprimer son propre compte depuis cette liste ?>
                     <?php if($utilisateur['id_utilisateur'] != $_SESSION['user']['id_utilisateur']) { ?>
                         <FORM action="index.php?page=admin" method="POST">
                             <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>
@@ -46,12 +49,14 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
             </tr>
             <?php } ?>
         </table>
+        <?php // Affiche un message si la creation d'un utilisateur a échoué ?>
         <?php if(isset($error)){
             echo "Une erreur est survenue lors de la création de l'utilisateur";
         } ?>
     </div>
 
 <?php
+    // Affiche le formulaire de modification lorsqu'un utilisateur a été selectionné
     if(isset($modif) && isset($id_utilisateur)){
         unset($modif);
         $utilisateur = infoUtilisateur($id_utilisateur);
@@ -69,6 +74,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <INPUT class="form-control" type="password" name="mdp" placeholder="Nouveau mot de passe"></INPUT> <br>
                 <LABEL class="form-label" for="role">Rôle:</LABEL> <br>
                 <SELECT class="form-select" name="role" required>
+                    <?php // Preserve le role actuel dans la liste deroulante. ?>
                     <option value="1" <?php if($utilisateur['role'] == '1') echo 'selected'; ?>>Utilisateur</option>
                     <option value="2" <?php if($utilisateur['role'] == '2') echo 'selected'; ?>>Administrateur</option>
                 </SELECT> <br>
@@ -84,6 +90,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
 
 }
 else{
+    // Redirige les utilisateurs non autorisés vers la page d'accueil
     header('Location: index.php?page=accueil');
 }
 
