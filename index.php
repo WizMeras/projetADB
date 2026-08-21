@@ -12,6 +12,12 @@ else{
     $page = 'accueil';
 }
 
+if(isset($_SESSION['user']) && $_SESSION['user']['modif_mdp'] == 1){
+    // Redirection vers la page de modification du profil si l'utilisateur doit modifier son mot de passe
+    $page = 'modif_profil';
+    $modifMdp = 'obligatoire';
+}
+
 // Oriente la requéte vers le controleur correspondant a la page
 switch($page){
     case 'accueil':

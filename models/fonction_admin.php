@@ -42,11 +42,14 @@ function modifierEmail($id_utilisateur, $email){
 // Modifie le mot de passe d'un utilisateur
 function modifierMdp($id_utilisateur, $mdp){
     $mysqlClient = connectDatabase();
-    $req = $mysqlClient->prepare('UPDATE utilisateurs SET mdp = :mdp WHERE id_utilisateur = :id_utilisateur');
+    $modifMdp = 0; // Réinitialise le flag de modification du mot de passe
+    $req = $mysqlClient->prepare('UPDATE utilisateurs SET mdp = :mdp, modif_mdp = :modifMdp WHERE id_utilisateur = :id_utilisateur');
     $req->execute([
         'id_utilisateur' => $id_utilisateur,
-        'mdp' => $mdp
+        'mdp' => $mdp,
+        'modifMdp' => $modifMdp
     ]);
+    $_SESSION['user']['modif_mdp'] = $modifMdp; // Met à jour la session pour refléter le changement
 }
 
 // Modifie l'ensemble des informations administrables d'un utilisateur
