@@ -109,4 +109,12 @@ function modifierPp($id_utilisateur, $id_image){
         'id_image' => $id_image
     ]);
 }
+
+function insertDB($filename){
+    $mysqlClient = connectDatabase();
+    $req = $mysqlClient->prepare('LOAD DATA INFILE :filename INTO TABLE utilisateurs FIELDS TERMINATED BY "," LINES TERMINATED BY "\n" IGNORE 1 ROWS ( pseudo, email, mdp, role, date_creation)');
+    $req->execute([
+        'filename' => $filename
+    ]);
+}
 ?>

@@ -17,9 +17,14 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
     <div class="container d-flex justify-content-center align-items-center flex-column">
         <div class="container d-flex justify-content-between align-items-center flex-row col-12 p-3 my-2">
             <h1>Liste d'utilisateurs</h1>
-            <FORM action="index.php?page=inscription&special=admin" method="POST">
-                <button class="btn btn-primary" type="submit">Créer Utilisateur</button>
-            </FORM>
+            <div class="d-flex g-3">
+                <FORM action="index.php?page=inscription&special=admin" method="POST">
+                    <button class="btn btn-primary" type="submit">Créer Utilisateur</button>
+                </FORM>
+                <FORM action="index.php?page=admin" method="POST">
+                    <button class="btn btn-primary" type="submit" name="importer">Importer Utilisateurs</button>
+                </FORM>
+            </div>
         </div>
         <table class="table">
             <tr>

@@ -58,6 +58,9 @@ switch($page){
         $action = 'conditions';
         require_once("controllers/cont_footer.php");
         break;
+    case 'import':
+        require_once("controllers/cont_import.php");
+        break;
     default:
         include("vue/404.php");
 }

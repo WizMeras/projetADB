@@ -71,6 +71,10 @@ if(isset($_POST['supprimer'])){
     header('Location: index.php?page=admin');
 }
 
+if(isset($_POST['importer'])){
+    header('Location: index.php?page=import');
+}
+
 // Inclusion de la vue (affichage) de l'espace administrateur
 include("vue/espace_admin.php");
 ?>

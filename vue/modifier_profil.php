@@ -6,6 +6,10 @@ if(isset($_SESSION['user'])){
     $user = $_SESSION['user'];
     $id_utilisateur = $user['id_utilisateur'];
 
+    if(isset($_GET['modifMdp']) && $_GET['modifMdp'] === 'obligatoire'){
+        echo "<div class='alert alert-warning' role='alert'>Vous devez modifier votre mot de passe avant de continuer.</div>";
+    }
+
     // Traite le remplacement de la photo de profil
     if(isset($_POST['modifierPp'])){
         $image = uploadPp();
