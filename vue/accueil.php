@@ -29,7 +29,7 @@ else{
 <body>
     <div class="container-fluid d-flex justify-content-start flex-row col-12">
 <!-- Sidebar pour filtres -->
-        <div class="container d-flex justify-content-center flex-row col-2 bg-light p-3 my-2">
+        <div class="container d-flex justify-content-center flex-row col-2 p-3 mt-2 mb-5">
             <div class="d-flex flex-column justify-content-start">
                 <a class="btn btn-primary" href="index.php?page=creation">Créer un rapport</a>
                 <div class="d-flex flex-column justify-content-start">
@@ -56,24 +56,29 @@ else{
             <div class="container d-flex justify-content-start align-items-start flex-column col-12 ps-0 py-3">
                 <h1>Fil d'observation</h1>
             </div>
-            <?php foreach($rapports as $rapport){ 
-                // Limite la description affichée
-                if(strlen($rapport['contenu']) > 200){
-                    $description = substr($rapport['contenu'], 0, 200) . '...';
-                }
-                else {
-                    $description = $rapport['contenu'];
-                }
-            //Afficher un message si aucun rapport a afficher
+            <?php
+            //Affiche un message si il n'y a aucun rapport à afficher
+            if(empty($rapports)){
+                    echo '<p>Aucun rapport à afficher.</p>';
+            }
+            else{
+                foreach($rapports as $rapport){ 
+                    // Limite la description affichée
+                    if(strlen($rapport['contenu']) > 200){
+                        $description = mb_substr($rapport['contenu'], 0, mb_strpos($rapport['contenu'], ' ', 200)) . '...';
+                    }
+                    else {
+                        $description = $rapport['contenu'];
+                    }
             ?>
             <div class="card mb-3 col-12">
                 <div class="row g-0">
                     <div class="col-md-2">
-                        <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>"><img class="card-img-top img-fluid" style="width: 300px; height: 230px;" src="images/<?php echo $rapport['image_couverture'];?>" alt="Image de couverture"></a>
+                        <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>"><img class="card-img h-100" src="images/<?php echo $rapport['image_couverture'];?>" alt="Image de couverture"></a>
                     </div>
                     <div class="col-md-10">
-                        <div class="card-body" style="height: 100%;">
-                            <div class="d-flex flex-column justify-content-start align-items-start" style="height: 80%;">
+                        <div class="card-body" >
+                            <div class="d-flex flex-column justify-content-start align-items-start">
                                 <p class="card-text"><?php echo ucfirst($rapport['localisation']); ?> - <?php echo date('d/m/Y', strtotime($rapport['date_ecriture'])); ?></p>
                                 <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
                                 <p><?php echo $description; ?></p>
@@ -86,7 +91,7 @@ else{
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php }} ?>
         </div>
     </div>
 </body>
