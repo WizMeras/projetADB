@@ -81,7 +81,7 @@ if(isset($_SESSION['user'])){
                             <OPTION value="argentine">Argentine</OPTION>
                             <OPTION value="malouines">Îles Malouines</OPTION>
                             <OPTION value="galapagos">Îles Galapagos</OPTION>
-                            <OPTION value="zelande">Nouvelle-Zélande</OPTION>
+                            <OPTION value="zélande">Nouvelle-Zélande</OPTION>
                             <OPTION value="afrique">Afrique du Sud</OPTION>
                             <OPTION value="autre">Autres</OPTION>
                         </SELECT>

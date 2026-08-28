@@ -6,8 +6,8 @@ if(isset($_POST['inscription'])){
     // Nettoie les valeurs saisies avant de les transmettre au modele
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $mdp = htmlspecialchars($_POST['mdp']);
-    $confirmMdp = htmlspecialchars($_POST['confirmMdp']);
+    $mdp = htmlspecialchars(trim($_POST['mdp']));
+    $confirmMdp = htmlspecialchars(trim($_POST['confirmMdp']));
 
     // Signale une erreur si l'adresse e-mail est deja utilisée
     if(emailExistant($email)){
@@ -16,6 +16,7 @@ if(isset($_POST['inscription'])){
     else{
         // Verifie que les deux mots de passe correspondent
         if($mdp == $confirmMdp){
+            $mdp = md5($mdp);
             $role = 1;
             inscription($pseudo, $email, $mdp, $role);
             // Redirige vers la page de connexion apres l'inscription

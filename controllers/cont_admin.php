@@ -8,12 +8,14 @@ if(isset($_POST['creer'])){
     // Récupération et nettoyage des données du formulaire
     $pseudo = htmlspecialchars(trim($_POST['pseudo']));
     $email = htmlspecialchars(trim($_POST['email']));
-    $mdp = htmlspecialchars($_POST['mdp']);
+    $mdp = htmlspecialchars(trim($_POST['mdp']));
     $confirmMdp = htmlspecialchars($_POST['confirmMdp']);
     $role = htmlspecialchars($_POST['role']);
     
     // Vérification que les deux mots de passe correspondent
     if($mdp == $confirmMdp){
+        // Hachage du mot de passe pour la sécurité
+        $mdp = md5($mdp);
         // Appel de la fonction d'inscription avec le rôle
         inscription($pseudo, $email, $mdp, $role);
         // Redirection vers la page admin après création
@@ -43,7 +45,7 @@ if(isset($_POST['modifierUtilisateur'])){
     // Vérification si le mot de passe a été modifié
     if(!empty($_POST['mdp'])){
         // Si un nouveau mot de passe est fourni
-        $mdp = htmlspecialchars($_POST['mdp']);
+        $mdp = md5(htmlspecialchars(trim($_POST['mdp'])));
         $modifMdp = 1; // Flag pour indiquer une modification du mot de passe
     } else {
         // Si aucun mot de passe n'est fourni, on récupère l'ancien mot de passe

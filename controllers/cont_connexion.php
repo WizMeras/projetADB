@@ -6,7 +6,7 @@ require_once("models/fonction_connexion.php");
 if(isset($_POST['connexion'])){
     // Récupération et nettoyage des données du formulaire
     $email = htmlspecialchars(trim($_POST['email']));
-    $mdp = htmlspecialchars($_POST['mdp']);
+    $mdp = md5(htmlspecialchars(trim($_POST['mdp'])));
     
     // Appel de la fonction connexion pour vérifier les identifiants
     $user = connexion($email, $mdp);

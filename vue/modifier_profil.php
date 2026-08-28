@@ -20,23 +20,24 @@ if(isset($_SESSION['user'])){
 
     // Traite la modification du pseudo
     if(isset($_POST['modifierPseudo'])){
-        $nouveauPseudo = $_POST['pseudo'];
+        $nouveauPseudo = htmlspecialchars(trim($_POST['pseudo']));
         modifierPseudo($id_utilisateur, $nouveauPseudo);
         header("Location: index.php?page=profil");
     }
 
     // Traite la modification de l'adresse e-mail
     if(isset($_POST['modifierEmail'])){
-        $nouvelEmail = $_POST['email'];
+        $nouvelEmail = htmlspecialchars(trim($_POST['email']));
         modifierEmail($id_utilisateur, $nouvelEmail);
         header("Location: index.php?page=profil");
     }
 
     // Modifie le mot de passe uniquement si les deux saisies correspondent
     if(isset($_POST['modifierMdp'])){
-        $nouveauMdp = $_POST['mdp'];
-        $confMdp = $_POST['confMdp'];
+        $nouveauMdp = htmlspecialchars(trim($_POST['mdp']));
+        $confMdp = htmlspecialchars(trim($_POST['confMdp']));
         if($nouveauMdp === $confMdp){
+            $nouveauMdp = md5($nouveauMdp);
             modifierMdp($id_utilisateur, $nouveauMdp);
             header("Location: index.php?page=profil");
         }
