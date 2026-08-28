@@ -76,7 +76,8 @@ if(isset($_SESSION['user'])){
             <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
                 <FORM class="form-group" action="index.php?page=modif_profil" method="POST">
                     <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
-                    <INPUT class="form-control" type="password" name="mdp" required></INPUT> <br>
+                    <INPUT class="form-control" type="password" name="mdp" id="mdp" required></INPUT>
+                    <div class="errorMessage" id="errorMdp"></div> <br>
                     <LABEL class="form-label" for="mdp">Confirmer mot de passe:</LABEL> <br>
                     <INPUT class="form-control" type="password" name="confMdp" required></INPUT>
                     <INPUT class="btn btn-primary mt-2" type="submit" name="modifierMdp" value="Modifier mot de passe"></INPUT>
@@ -85,6 +86,7 @@ if(isset($_SESSION['user'])){
         </div>
     </div>
 </body>
+<script src="js/profil.js"></script>
 </html>
 <?php
 }
