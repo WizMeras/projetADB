@@ -15,7 +15,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center flex-column">
-        <div class="container d-flex justify-content-between align-items-center flex-row col-12 p-3 my-2">
+        <div class="container d-flex justify-content-between align-items-center flex-column flex-lg-row col-12 p-3 my-2">
             <h1>Liste d'utilisateurs</h1>
             <div class="d-flex g-3">
                 <FORM action="index.php?page=inscription&special=admin" method="POST">
@@ -26,7 +26,9 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 </FORM>
             </div>
         </div>
+        <div class="table-responsive col-12 col-lg-10">
         <table class="table">
+            <thead>
             <tr>
                 <th>Nom d'utilisateur</th>
                 <th>Adresse mail</th>
@@ -34,6 +36,8 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 <th>Date de création</th>
                 <th>Actions</th>
             </tr>
+            </thead>
+            <tbody>
             <?php // Parcourt les utilisateurs pour remplir le tableau
             foreach($utilisateurs as $utilisateur){ ?>
             <tr class="align-middle">
@@ -53,7 +57,9 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
                 </td>
             </tr>
             <?php } ?>
+            </tbody>
         </table>
+        </div>
         <?php // Affiche un message si la creation d'un utilisateur a échoué ?>
         <?php if(isset($error)){
             echo "Une erreur est survenue lors de la création de l'utilisateur";
@@ -66,7 +72,7 @@ if(isset($_SESSION['user']) && $_SESSION['user']['role'] == '2'){
         unset($modif);
         $utilisateur = infoUtilisateur($id_utilisateur);
         ?>
-        <div class="container d-flex justify-content-center align-items-center flex-column col-6 p-3 my-2 bg-light rounded">
+        <div class="container d-flex justify-content-center align-items-center flex-column col-12 col-lg-6 p-3 my-2 bg-light rounded">
             <h1>Modifier l'utilisateur <?php echo $utilisateur['pseudo']; ?></h1>
             <FORM class="form-group" method="POST" action="index.php?page=admin">
                 <INPUT type="hidden" name="id_utilisateur" value="<?php echo $utilisateur['id_utilisateur']; ?>" readonly></INPUT>

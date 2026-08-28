@@ -20,8 +20,8 @@ if(isset($_SESSION['user'])){
     <title>Profil - PenguinWatch</title>
 </head>
 <body>
-    <div class="container align-items-center d-flex justify-content-between">
-        <div class="d-flex flex-column justify-content-start col-1">
+    <div class="container align-items-center d-flex justify-content-between flex-wrap">
+        <div class="d-flex flex-column justify-content-start col-3 col-lg-1">
             <img class="img-thumbnail" src="images/<?php echo $pfp['nom_image']; ?>" alt="Photo de profil">
         </div>
         <div class="d-flex justify-content-between col-11">
@@ -65,7 +65,7 @@ if(isset($_SESSION['user'])){
         <div class="col-12 col-md-6 col-lg-4 mb-4">
             <p><?php echo ucfirst($rapport['localisation']); ?></p>
             <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>">
-                <img class="img-thumbnail img-fluid" style="min-width: 380px; min-height: 280px; max-width: 380px; max-height: 280px;" src="images/<?php echo $rapport['image_couverture']; ?>" alt="Photo de couverture">
+                <img class="img-thumbnail img-fluid" style="min-width: 360px; min-height: 280px; max-width: 360px; max-height: 280px;" src="images/<?php echo $rapport['image_couverture']; ?>" alt="Photo de couverture">
             </a>
             <a href="index.php?page=rapport&id=<?php echo $rapport[0]; ?>" class="card-link nav-link" style="color: #003366"><h4><?php echo ucfirst($rapport['titre']); ?></h4></a>
             <p><?php echo $description; ?></p>

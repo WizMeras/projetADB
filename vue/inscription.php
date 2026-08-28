@@ -15,7 +15,7 @@ if(isset($_GET['special']) && $_GET['special'] == 'admin'){
 <body>
     <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
         <h1>Créer un nouvel utilisateur</h1>
-        <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+        <div class="container d-flex justify-content-center align-items-center flex-column col-8 col-lg-4 my-2">
             <FORM class="form" style="width: 100%;" method="POST" action="index.php?page=admin">
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="text" name="pseudo" required></INPUT> <br>
@@ -53,9 +53,9 @@ else{
     <title>Inscription - PenguinWatch</title>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 80vh;">
+    <div class="container d-flex justify-content-center align-items-center flex-column" style="height: 90vh;">
         <h1>Inscription</h1>
-        <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+        <div class="container d-flex justify-content-center align-items-center flex-column col-8 col-lg-4 my-2">
             <FORM class="form" style="width: 100%;" method="POST" action="index.php?page=inscription">
                 <LABEL class="form-label" for="pseudo">Nom d'utilisateur:</LABEL> <br>
                 <INPUT class="form-control" style="width: 100%;" type="text" name="pseudo" required></INPUT> <br>
@@ -83,7 +83,7 @@ else{
         }
         ?>
 
-        <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+        <div class="container d-flex justify-content-center align-items-center flex-column col-8 col-lg-4 my-2">
             <p>Déjà membre?</p>
             <a class="btn btn-secondary" style="width: 100%;" href="index.php?page=connexion">Se connecter</a>
         </div>

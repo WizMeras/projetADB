@@ -27,9 +27,9 @@ else{
     <title>Fil d'observation - PenguinWatch</title>
 </head>
 <body>
-    <div class="container-fluid d-flex justify-content-start flex-row col-12">
+    <div class="container-fluid d-flex justify-content-start align-items-center align-items-lg-start flex-column flex-lg-row col-12">
 <!-- Sidebar pour filtres -->
-        <div class="container d-flex justify-content-center flex-row col-2 p-3 mt-2 mb-5">
+        <div class="col-8 col-lg-2 p-3 mt-2 mb-5 collapse d-lg-block" id="sidebar">
             <div class="d-flex flex-column justify-content-start">
                 <a class="btn btn-primary" href="index.php?page=creation">Créer un rapport</a>
                 <div class="d-flex flex-column justify-content-start">
@@ -50,9 +50,12 @@ else{
                 </div>
             </div>
         </div>
+        <button class="btn btn-outline-primary d-lg-none col-3" style="height: 10%" type="button" data-bs-toggle="collapse" data-bs-target="#sidebar" aria-controls="sidebar" aria-expanded="false" aria-label="Toggle filters">
+            Filtres
+        </button>
 
 <!-- Contenu principal -->
-        <div class="container d-flex justify-content-evenly flex-row flex-wrap col-10">
+        <div class="container d-flex justify-content-evenly flex-row flex-wrap col-12 col-lg-10">
             <div class="container d-flex justify-content-start align-items-start flex-column col-12 ps-0 py-3">
                 <h1>Fil d'observation</h1>
             </div>

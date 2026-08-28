@@ -7,7 +7,10 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <h2>PenguinWatch</h2>
-        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarFooter" aria-controls="navbarFooter" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarFooter">
             <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="index.php?page=vie_privee">Vie privée</a>

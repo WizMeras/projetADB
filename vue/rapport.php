@@ -48,8 +48,8 @@ if(isset($_POST['Supprimer'])){
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center flex-column">
-        <h1><?php echo $rapport['titre']; ?></h1>
-        <div class="container d-flex justify-content-start align-items-start flex-column col-8 p-3 my-2">
+        <h1 class="text-center"><?php echo $rapport['titre']; ?></h1>
+        <div class="container d-flex justify-content-start align-items-start flex-column col-12 col-lg-8 p-3 my-2">
             <div class="container d-flex flex-column col-12 p-3 my-2">
                 <hr>
                 <p>Publié par: <?php echo $rapport['pseudo']; ?></p>
@@ -79,7 +79,7 @@ if(isset($_POST['Supprimer'])){
         </div>
     </div>
 
-    <div class="container d-flex justify-content-center align-items-start flex-column col-8 p-3 my-2">
+    <div class="container d-flex justify-content-center align-items-start flex-column col-12 col-lg-8 p-3 my-2">
         <h2>Commentaires (<?php echo $nombre_commentaires['nbre_commentaires']; ?>)</h2>
         <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2">
             <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2 bg-white rounded">

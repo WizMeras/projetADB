@@ -51,10 +51,12 @@ if(isset($_SESSION['user'])){
     <title>Modifier profil - PenguinWatch</title>
 </head>
 <body>
-    <div class="container d-flex justify-content-center align-items-center flex-column">
-        <h1>Modifier profil de <?php echo $user['pseudo']; ?></h1>
-        <div class="container d-flex justify-content-center align-items-center flex-row col-12 my-2">
-            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+    <div class="container d-flex align-items-center flex-column" style="height: 90vh;">
+        <div>
+            <h1>Modifier profil de <?php echo $user['pseudo']; ?></h1>
+        </div>
+        <div class="container d-flex justify-content-center align-items-center flex-row flex-wrap gap-3 col-12 my-2" style="height: 80%;">
+            <div class="container d-flex justify-content-center align-items-center flex-column col-12 col-lg-3 my-2 border border-dark p-3 rounded">
                 <FORM class="form-group" action="index.php?page=modif_profil" method="POST" enctype="multipart/form-data">
                     <LABEL class="form-label" for="photo">Changer photo de profil:</LABEL> <br>
                     <INPUT class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" name="photo" required></INPUT>
@@ -62,7 +64,7 @@ if(isset($_SESSION['user'])){
                 </FORM>
             </div>
 
-            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+            <div class="container d-flex justify-content-center align-items-center flex-column col-12 col-lg-3 my-2 border border-dark  p-3 rounded">
                 <FORM class="form-group" action="index.php?page=modif_profil" method="POST">
                     <LABEL class="form-label" for="pseudo">Pseudo:</LABEL> <br>
                     <INPUT class="form-control" type="text" name="pseudo" value="<?php echo $user['pseudo']; ?>"></INPUT>
@@ -73,7 +75,7 @@ if(isset($_SESSION['user'])){
                 </FORM>
             </div>
 
-            <div class="container d-flex justify-content-center align-items-center flex-column col-4 my-2">
+            <div class="container d-flex justify-content-center align-items-center flex-column col-12 col-lg-3 my-2 border border-dark  p-3 rounded">
                 <FORM class="form-group" action="index.php?page=modif_profil" method="POST">
                     <LABEL class="form-label" for="mdp">Mot de passe:</LABEL> <br>
                     <INPUT class="form-control" type="password" name="mdp" id="mdp" required></INPUT>

@@ -14,10 +14,10 @@
     <nav class="navbar navbar-expand-lg navbar-white bg-white">
         <div class="container-fluid">
             <a class="navbar-brand" href="index.php?page=accueil">PenguinWatch</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarHeader">
                 <ul class="navbar-nav">
                     <li class="nav-item">
                         <a class="nav-link" href="index.php?page=accueil">Accueil</a>
@@ -29,20 +29,24 @@
             </div>
         </div>
 
-        <ul class="navbar-nav ml-auto">
-            <?php // Affiche les options de navigation selon l'état de connexion ?>
-            <?php if(isset($_SESSION['user'])){ ?>
-                <li>
-                    <FORM action="index.php?page=accueil" method="post">
+        <div>
+            <ul class="navbar-nav collapse navbar-collapse" id="navbarNav">
+                <?php // Affiche les options de navigation selon l'état de connexion ?>
+                <?php if(isset($_SESSION['user'])){ ?>
+                    <li class="nav-item">
+                        <FORM action="index.php?page=accueil" method="post">
 <!-- Inclure le nom d'utilisateur et/ou sa photo de profil -->
-                        <button class="nav-link" type="submit" name="deconnexion">Déconnexion</button>
-                    </FORM>
-                </li>
-            <?php }
-            else{ ?>
-                <li><a class="nav-link" href="index.php?page=connexion">Connexion</a></li>
-            <?php } ?>
-        </ul>
+                            <button class="nav-link" type="submit" name="deconnexion">Déconnexion</button>
+                        </FORM>
+                    </li>
+                <?php }
+                else{ ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?page=connexion">Connexion</a>
+                    </li>
+                <?php } ?>
+            </ul>
+        </div>
     </nav>
 </body>
 </html>

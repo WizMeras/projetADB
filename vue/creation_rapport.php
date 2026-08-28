@@ -24,13 +24,13 @@ if(isset($_SESSION['user'])){
             </head>
             <body>
                 <div class="container d-flex justify-content-center align-items-center flex-column">
-                    <div class="container d-flex justify-content-start align-items-center flex-column col-5 p-3 my-2">
+                    <div class="container d-flex justify-content-start align-items-center flex-column col-12 col-lg-5 p-3 my-2">
                         <h1>Modifier un rapport</h1>
                     </div>
 
-                    <div class="container d-flex justify-content-center align-items-center flex-row col-10 p-3 my-2">
-                        <FORM class="form d-flex flex-row" style="width: 100%;" action="index.php?page=creation&id=<?php echo $id_rapport; ?>" method="POST" enctype="multipart/form-data">
-                            <div class="container d-flex justify-content-center flex-column col-5 p-3 my-2 bg-white rounded">
+                    <div class="container d-flex justify-content-center align-items-center flex-row col-12 col-lg-10 p-3 my-2">
+                        <FORM class="form d-flex flex-column flex-lg-row" style="width: 100%;" action="index.php?page=creation&id=<?php echo $id_rapport; ?>" method="POST" enctype="multipart/form-data">
+                            <div class="container d-flex justify-content-center flex-column col-12 col-lg-5 p-3 my-2 bg-white rounded">
                                 <LABEL class="form-label" for="rapport">Corps du rapport:</LABEL>
                                 <TEXTAREA class="form-control" name="rapport" cols="30" rows="12" required><?php echo $rapport['contenu'];?></TEXTAREA> <br>
                                 <INPUT class="btn btn-primary" style="width: 100%;" type="submit" name="modifier" value="Modifier Rapport"></INPUT>
@@ -55,19 +55,19 @@ if(isset($_SESSION['user'])){
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center flex-column">
-        <div class="container d-flex justify-content-start align-items-center flex-column col-5 p-3 my-2">
+        <div class="container d-flex justify-content-start align-items-center flex-column col-12 col-lg-5 p-3 my-2">
             <h1>Écrire un nouveau rapport</h1>
         </div>
 
-        <div class="container d-flex justify-content-center align-items-center flex-row col-10 p-3 my-2">
-            <FORM class="form d-flex flex-row" style="width: 100%;" action="index.php?page=creation" method="POST" enctype="multipart/form-data">
-                <div class="container d-flex justify-content-center flex-column col-5 p-3 my-2 bg-white rounded">
+        <div class="container d-flex flex-wrap justify-content-center align-items-center flex-row col-12 col-lg-10 p-3 my-2">
+            <FORM class="form d-flex flex-column flex-lg-row" style="width: 100%;" action="index.php?page=creation" method="POST" enctype="multipart/form-data">
+                <div class="container d-flex justify-content-center flex-column col-12 col-lg-5 p-3 my-2 bg-white rounded">
                     <LABEL class="form-label" for="titre">Titre:</LABEL>
                     <INPUT class="form-control" type="text" name="titre" required></INPUT> <br>
                     <LABEL class="form-label" for="rapport">Corps du rapport:</LABEL>
                     <TEXTAREA class="form-control" name="rapport" cols="30" rows="12" required></TEXTAREA> <br>
                 </div>
-                <div class="container d-flex flex-column col-5 p-3 my-2">
+                <div class="container d-flex flex-column col-12 col-lg-5 p-3 my-2">
                     <div class="bg-white p-3 rounded mb-3">
                         <LABEL class="form-label" for="photo">Ajouter une photo:</LABEL> <br>
                         <INPUT class="form-control" type="file" accept=".jpg,.jpeg,.png,.webp" name="photo"></INPUT>
