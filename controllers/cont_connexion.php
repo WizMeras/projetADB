@@ -7,7 +7,6 @@ if(isset($_POST['connexion'])){
     // Récupération et nettoyage des données du formulaire
     $email = htmlspecialchars(trim($_POST['email']));
     $mdp = md5(htmlspecialchars(trim($_POST['mdp'])));
-    
     // Appel de la fonction connexion pour vérifier les identifiants
     $user = connexion($email, $mdp);
     

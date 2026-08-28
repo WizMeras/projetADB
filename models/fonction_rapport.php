@@ -76,4 +76,10 @@ function modifierContenuRapport($id_rapport, $contenu){
         'id_rapport' => $id_rapport
     ]);
 }
+
+function supprimerCommentaire($id_commentaire){
+    $mysqlClient = connectDatabase();
+    $req = $mysqlClient->prepare('DELETE FROM commentaires WHERE id_commentaire=:id_commentaire');
+    $req->execute(['id_commentaire' => $id_commentaire]);
+}
 ?>

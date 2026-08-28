@@ -117,4 +117,13 @@ function insertDB($filename){
         'filename' => $filename
     ]);
 }
+
+function updateUser($id_utilisateur){
+    $mysqlClient = connectDatabase();
+    $req = $mysqlClient->prepare('SELECT * FROM utilisateurs WHERE id_utilisateur = :id_utilisateur');
+    $req->execute([
+        'id_utilisateur' => $id_utilisateur
+    ]);
+    return $req->fetch();
+}
 ?>

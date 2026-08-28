@@ -22,6 +22,8 @@ if(isset($_SESSION['user'])){
     if(isset($_POST['modifierPseudo'])){
         $nouveauPseudo = htmlspecialchars(trim($_POST['pseudo']));
         modifierPseudo($id_utilisateur, $nouveauPseudo);
+        // Met à jour les informations de l'utilisateur dans la session
+        $_SESSION['user'] = updateUser($id_utilisateur);
         header("Location: index.php?page=profil");
     }
 

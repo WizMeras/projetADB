@@ -14,6 +14,7 @@ if(isset($_SESSION['user'])){
             exit();
         }
         else{
+            $contenu = str_replace('<br />', "", $rapport['contenu']);
             ?>
             <!DOCTYPE html>
             <html lang="en">
@@ -32,7 +33,7 @@ if(isset($_SESSION['user'])){
                         <FORM class="form d-flex flex-column flex-lg-row" style="width: 100%;" action="index.php?page=creation&id=<?php echo $id_rapport; ?>" method="POST" enctype="multipart/form-data">
                             <div class="container d-flex justify-content-center flex-column col-12 col-lg-5 p-3 my-2 bg-white rounded">
                                 <LABEL class="form-label" for="rapport">Corps du rapport:</LABEL>
-                                <TEXTAREA class="form-control" name="rapport" cols="30" rows="12" required><?php echo $rapport['contenu'];?></TEXTAREA> <br>
+                                <TEXTAREA class="form-control" name="rapport" cols="30" rows="12" required><?php echo $contenu;?></TEXTAREA> <br>
                                 <INPUT class="btn btn-primary" style="width: 100%;" type="submit" name="modifier" value="Modifier Rapport"></INPUT>
                             </div>
                         </FORM>

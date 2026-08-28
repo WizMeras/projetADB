@@ -37,6 +37,14 @@ if(isset($_POST['Supprimer'])){
     header('Location: index.php?page=accueil');
     exit();
 }
+
+// Supprime le commentaire puis recharge la page du rapport
+if(isset($_POST['SupprimerCom'])){
+    $id_commentaire = htmlspecialchars($_POST['id_commentaire']);
+    supprimerCommentaire($id_commentaire);
+    header('Location: index.php?page=rapport&id=' . $id_rapport);
+    exit();
+}
 ?>
 
 <!DOCTYPE html>
@@ -55,8 +63,7 @@ if(isset($_POST['Supprimer'])){
                 <p>Publié par: <?php echo $rapport['pseudo']; ?></p>
                 <p>Date de publication: <?php echo $rapport['date_ecriture']; ?></p>
                 <?php // Autorise l'auteur a modifier ou supprimer son rapport ?>
-                <?php if(isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $rapport['id_utilisateur']){ ?>
-                    
+                <?php if(isset($_SESSION['user']) && $_SESSION['user']['id_utilisateur'] == $rapport['id_utilisateur']){ ?> 
                     <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST" style="display:inline">
                         <button class="btn btn-primary" type="submit" name="Modifier">Modifier</button>
                         <button class="btn btn-danger" type="submit" name="Supprimer">Supprimer</button>
@@ -94,7 +101,15 @@ if(isset($_POST['Supprimer'])){
                 <?php foreach($commentaires as $commentaire){ ?>
                     <div class="container d-flex justify-content-start align-items-start flex-column col-12 p-3 my-2">
                         <img class="thumbnail small" src="images/<?php echo $commentaire['nom_image']; ?>" alt="Photo de profil">
-                        <p><?php echo $commentaire['pseudo']; ?></p>
+                        <div class="d-flex justify-content-between flex-row col-12">
+                            <p><?php echo $commentaire['pseudo']; ?></p>
+                            <?php if(isset($_SESSION['user']) && ($_SESSION['user']['id_utilisateur'] == $commentaire['id_utilisateur'] || $_SESSION['user']['role'] == 2)){ ?> 
+                            <FORM action="index.php?page=rapport&id=<?php echo $id_rapport; ?>" method="POST">
+                                <input type="hidden" name="id_commentaire" value="<?php echo $commentaire['id_commentaire']; ?>" readonly></input>
+                                <button class="btn btn-danger" type="submit" name="SupprimerCom">Supprimer</button>
+                            </FORM>
+                            <?php } ?>
+                        </div>
                         <p><?php echo date('d/m/Y', strtotime($commentaire['date_publication'])); ?></p>
                         <p><?php echo $commentaire['texte_commentaire']; ?></p>
                     </div>
